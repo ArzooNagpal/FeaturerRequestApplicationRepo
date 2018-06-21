@@ -8,7 +8,7 @@ For Proof Of Concept, built a project 'Feature Request Application' with python,
 # Getting Started:
 	Pre-requisites: Project is built and validated using the following software
 		* Python (v.3.6.5), 
-		* MySQL client(v.1.3.12)
+		* MySQL database(v.8.0.11)
 		* Browsers: Chrome(v.64.) and Firefox(v.55+)
 	Note: If any other database has to be used please change the connection string in Config.py and also change system paths 
     	* Please Refer to Stack/Application Details for further specifications below.
@@ -18,23 +18,22 @@ For Proof Of Concept, built a project 'Feature Request Application' with python,
 
 # Installation:
 	1.Open GitHub link and download the project folder.
-	2.Open command prompt in project folder “FeatureRequestApplication\featureRequestAppEnv\Scripts” and type
+	2.Open command prompt in project folder “FeatureRequestApplicationRepo\featureRequestAppEnv\Scripts” and type
 	‘activate’. This will activate the ‘featureRequestAppEnv’.
 
 	**.. \Feature Request Application\featureRequestAppEnv\Scripts>activate
-	**(featureRequestAppEnv)..\FeatureRequestApplication\featureRequestAppEnv\Scripts>
+	**(featureRequestAppEnv)..\FeatureRequestApplicationRepo\featureRequestAppEnv\Scripts>
 		
-	3.Then install required packages present in requirements.txt by executing command ‘pip install –r requirements.txt’ OR
-	can run command ‘pip install  package-name’
-	**(FeatureRequestVirtualEnvironment)..FeatureRequestApplication\featureRequestAppEnv\Scripts> pip install –r 		requirements.txt
+	3.Then install required packages present in requirements.txt by executing command ‘pip install –r requirements.txt’ OR can run command ‘pip install  package-name’
+	**(FeatureRequestVirtualEnvironment)..FeatureRequestApplicationRepo\featureRequestAppEnv\Scripts> pip install –r 		requirements.txt
 	4.Set Flask_APP variable by using command ‘set FLASK_APP=run.py’
 	
-	**(featureRequestAppEnv)..FeatureRequestApplication\featureRequestAppEnv\Scripts>set FLASK_APP=run.py
+	**(featureRequestAppEnv)..FeatureRequestApplicationRepo\featureRequestAppEnv\Scripts>set FLASK_APP=run.py
         
 	5.Type ‘flask run’ and navigate to ‘http://127.0.0.1:5000/featureRequestForm’ you can see Feature Request App form
 	
-	**(FeatureRequestEnv)..\FeatureRequestApplication\FeatureRequestEnv>flask run
- 							* Serving Flask app "FeatureRequestApplication"
+	**(FeatureRequestEnv)..\FeatureRequestApplicationRepo\FeatureRequestEnv>flask run
+ 							* Serving Flask app "FeatureRequestApplicationRepo"
 							* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
  					
  # Feature Request Application Form Page:
@@ -68,7 +67,7 @@ For Proof Of Concept, built a project 'Feature Request Application' with python,
         
 # Feature Request Application Details Page:
 	Entering all values and on clicking ‘Submit’ it will navigate to details page at url ‘http://127.0.0.1:5000
-	/featureRequestDetails’ where all the feature request details are reflected in a table [built with jQuery data Table] which will have Sorting and Searching.
+	/featureRequestDetails’ where all the feature request details are reflected in a table [built with jQuery data Table] which will have Searching functionalty.
 	
 # Stack/Application Details:
 	The following are requirements on the tech stack. This stack demonstrates mastery of tools our team favors.
@@ -78,8 +77,7 @@ For Proof Of Concept, built a project 'Feature Request Application' with python,
 	•SqlAlchemy (1.2.8): Solution Options for Reprioritization
 		1.SQL ORM: This has been implemented-ORM tools provide an object oriented query language. This allows application developers to focus on the object model and not to have to be concerned with the database structure or SQL semantics.
 		The ORM tool itself will translate the query language into the appropriate syntax for the database.
-		2.Using Stored Procedure: Stored procedures are compiled once and stored in executable form, so procedure calls are quick and efficient. Executable code is automatically cached and shared among users. This lowers memory requirements and
-		invocation overhead.
+		2.Using Stored Procedure: Stored procedures are compiled once and stored in executable form, so procedure calls are quick and efficient. Executable code is automatically cached and shared among users. This lowers memory requirements and invocation overhead.
 		3.Bulk Update: A feature which will record all the changes and will update in bulk which will reduce the detours to/from database.
 	•JavaScript: KnockoutJS (3.4.2): Knockout is a JavaScript library that which gives a simplified and dynamic Model-View-
 	 View Model binding pattern for all the UI elements in HTML.
