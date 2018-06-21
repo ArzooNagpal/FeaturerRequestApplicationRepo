@@ -1,12 +1,12 @@
+# importing flask object 'app'
 from App import app
-# Importing SQL Alchemy class from the flask_sqlalchemy module
-#from sqlalchemy import Sequence
+#importing Config class
 from App.config import Config 
 
 # A class FeatureRequestForm will be the class to which we will map the table and contains required columns from table as variables in class.
 class FeatureRequestForm(Config.db.Model):
-    __tablename__='FeatureRequestForm'
-   # FeatureId = Config.db.Column('FeatureId', Config.db.Integer(), Sequence('feature_id_seq'),unique=True,primary_key=True)
+    __tablename__= Config.tableName
+   # TBD--FeatureId = Config.db.Column('FeatureId', Config.db.Integer(), Sequence('feature_id_seq'),unique=True,primary_key=True)
     title = Config.db.Column(Config.db.String(100), unique= True,primary_key=True)
     description = Config.db.Column(Config.db.String(2000))
     client = Config.db.Column(Config.db.String(50))  
@@ -22,4 +22,3 @@ class FeatureRequestForm(Config.db.Model):
         self.target_date = target_date
         self.product_area = product_area
 
-#INSERT INTO `FeatureRequestForm` (`Title`, `Description`, `Client`, `Client_priority`, `Target_date`, `Product_area`) VALUES ('title 34', 'desc 34', 'Client B', 1, '2018-06-22', 'Policies')

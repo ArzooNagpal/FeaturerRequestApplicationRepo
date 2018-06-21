@@ -1,5 +1,6 @@
+<!--featureRequestForm html page consists of form page with all the required input elements for creating a feature request-->
 <html>
-<!-- Head section consists of title of application and source script files knockoutjs and jquery-->
+<!-- Head section consists of title of application and source script files knockoutjs and jquery, bootstrap-->
 
 <head>
   <title>BriteCore Feature Request App</title>
@@ -8,7 +9,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="{{ url_for ('static', filename='js/knockout-3.4.2.js')}}"></script> {% extends "base.html" %}
+  <script type="text/javascript" src="{{ url_for ('static', filename='js/knockout-3.4.2.js')}}"></script>
+  <!-- extends base html page -->
+  {% extends "base.html" %}
+  <!--Style elemetns for base html-->
   <style>
     code {
       background-color: white
@@ -30,11 +34,11 @@
     </div>
     <br>
     <!--Form which includes Title,Description,Client,Client Priority,Target Date,Product Area and is binded using Knockout.js concept-->
-    <form class="form-horizontal"data-bind="submit:Done">
+    <form class="form-horizontal" data-bind="submit:onSubmit">
       <div class="form-group">
         <label class="col-sm-4 control-label">Title:</label>
-        <input type="text" class="form-control" id="title" pattern="[A-Za-z]{1,50}" title="Please don't enter alphanumeric values" data-bind='value: title, valueUpdate: "afterkeydown"'
-          name="Title" style="width:50%;" required>
+        <input type="text" class="form-control" id="title" pattern="[A-Za-z]{1,50}" title="Please don't enter alphanumeric values"
+          data-bind='value: title, valueUpdate: "afterkeydown"' name="Title" style="width:50%;" required>
       </div>
       <div class="form-group">
         <label class="col-sm-4 control-label">Descripiton:</label>
@@ -83,10 +87,8 @@
   </div>
   </form>
   </div>
-  <!--function appViewModel() consists of title, description, client, client priority,target date and product area fields-->
   <script type='text/javascript'>
-    //function appViewModel() consists of title, description, client, client priority,target date and product area fields
-
+    //function featureRequestViewModel() consists of title, description, client, client priority,target date and product area fields.
     var featureRequestViewModel = {
       title: ko.observable(""),
       description: ko.observable(""),
@@ -95,14 +97,15 @@
       targetDate: ko.observable(""),
       productArea: ko.observable("")
     };
-    self.Done = function () {
-      console.log("inside update");
+    self.onSubmit = function () {
+      //Performs a ajax POST call to below url with JSON data from featureReuqestViewModel
       $.ajax({
         url: '/createfeature',
         type: 'POST',
         data: ko.toJSON(featureRequestViewModel),
         contentType: 'application/json',
         success: function (result) {
+          //Resoponse from ajax POST call is stored in result variable
           if (result == "success") {
             alert("Record inserted Sucessfully");
             window.location = "/featureRequestDetails";
@@ -112,15 +115,13 @@
           }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-          alert("some error");
-
+          alert("Error Occured. Please contact your administrator");
         }
       });
     };
-
+    //Apply bindings to featureRequestViewModel
     ko.applyBindings(featureRequestViewModel);
-
+    //Script for restricting to enter past dates
     var now = new Date(), minDate = now.toISOString().substring(0, 10);
     $('#TargetDate').prop('min', minDate);
   </script> {% endblock %}

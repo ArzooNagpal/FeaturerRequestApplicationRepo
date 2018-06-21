@@ -1,6 +1,6 @@
-
-
+//featureRequestDetails js file is used to display features in the form of table using Jquery data tables
 $(document).ready(function () {
+    //Ajax get call from the below url to retrieve all feaures
     $.ajax({
         url: '/retrievefeature',
         type: 'get',
